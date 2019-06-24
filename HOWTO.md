@@ -4,7 +4,7 @@ Simply fork this project and start your runtime development in `lib.rs`.
 
 ## Updating Your Dependencies
 
-For the time being, Substrate does not have any releases on Cargo, which means there is some magic involved with ensuring that all the dependencies of your module and the downstream runtime are the same.
+For the time being, Substrate does not have any releases on crate.io, so we'll use git commits to ensure that all the dependencies of your module and the downstream runtime are the same.
 
 This repository has all Substrate dependencies use:
 
@@ -12,7 +12,7 @@ This repository has all Substrate dependencies use:
 branch = 'v1.0'
 ```
 
-This means that the runtime is using this module must also be tied to the `v1.0` branch, not simply the same commit (`rev`).
+The runtime using this module must also be tied to the `v1.0` branch, not simply the same commit (`rev`).
 
 If you are working with the Substrate node template or the [`substrate-package`](https://github.com/shawntabrizi/substrate-package/) which uses a specific git commit (`rev`), you can find/replace all instances of `branch = 'v1.0'` with:
 
@@ -20,7 +20,7 @@ If you are working with the Substrate node template or the [`substrate-package`]
 rev = '<git-commit>'
 ```
 
-This of course means that only runtimes with this setting on their side can use your module, at which point you may want to introduce different branches yourself for supporting different commits... 
+This of course means that only runtimes with this same setting on their side can use your module, at which point you may want to introduce different branches yourself for supporting different commits... 
 
 Our recommended pattern is to keep your module marked as `v1.0` and tell your runtime developer to update their dependencies. `v1.0` branch _should_ be stable.
 
